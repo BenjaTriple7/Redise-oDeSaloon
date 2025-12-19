@@ -1,0 +1,752 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #013380 0%, #01072B 50%, #000000 100%);
+    min-height: 100vh;
+    color: white;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Partículas flotantes brillantes */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.8) 2px, transparent 2px),
+        radial-gradient(circle, rgba(102, 179, 255, 0.6) 3px, transparent 3px),
+        radial-gradient(circle, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+    background-size: 200px 200px, 300px 300px, 150px 150px;
+    background-position: 0 0, 50px 50px, 100px 100px;
+    animation: particlesFloat 30s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes particlesFloat {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-200px, -200px);
+    }
+}
+
+/* Onda de luz que cruza la pantalla */
+body::after {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(102, 179, 255, 0.15) 0%, transparent 50%);
+    animation: lightWave 10s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes lightWave {
+
+    0%,
+    100% {
+        transform: translate(0%, 0%) scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translate(25%, 25%) scale(1.2);
+        opacity: 0.6;
+    }
+}
+
+.top-bar {
+    background: #000000;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: fadeInBar 1s ease-out forwards;
+
+}
+
+@keyframes fadeInBar {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-section {
+    position: relative;
+    height: 750px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.band-photo {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    z-index: 1;
+    transition: transform 0.1s ease-out;
+    opacity: 0;
+    animation: fadeInPhoto 1.5s ease-out 0.3s forwards;
+}
+
+@keyframes fadeInPhoto {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.band-logo {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1400px;
+    min-width: 300px;
+    height: auto;
+    object-fit: contain;
+    top: 37%;
+    left: 0;
+    transition: transform 0.1s ease-out;
+    opacity: 0;
+    animation: fadeInLogo 1.2s ease-out 0.8s forwards;
+}
+
+@keyframes fadeInLogo {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.next-show-label {
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 400px;
+    }
+
+    .band-logo {
+        width: 90%;
+    }
+
+    .next-show-label {
+        font-size: 1em;
+    }
+}
+
+/* Seccion de shows */
+
+.shows-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.section-title {
+    font-size: 2em;
+    font-weight: normal;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.show-row {
+    display: grid;
+    grid-template-columns: 150px 1fr 150px;
+    align-items: center;
+    gap: 40px;
+    padding: 30px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.first-show {
+    border-bottom: none;
+    margin-bottom: 20px;
+}
+
+.separator {
+    height: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+.show-date {
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+.show-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+}
+
+.show-venue {
+    font-size: 1.3em;
+    color: #66b3ff;
+}
+
+.show-city {
+    font-size: 1em;
+    color: #ffffff;
+}
+
+.tickets-btn {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 12px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+}
+
+.tickets-btn:hover {
+    background: #ffffff;
+    color: #000;
+    transform: scale(1.05);
+}
+
+.show-row.past-event {
+    opacity: 0.5;
+}
+
+.show-row.past-event .show-date,
+.show-row.past-event .show-venue,
+.show-row.past-event .show-city {
+    text-decoration: line-through;
+    text-decoration-color: white;
+    text-decoration-thickness: 2px;
+}
+
+.show-row.past-event .tickets-btn {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.next-show-label {
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 400px;
+    }
+
+    .band-logo {
+        width: 90%;
+    }
+
+    .next-show-label {
+        font-size: 1em;
+    }
+
+    .shows-container {
+        padding: 30px 20px;
+    }
+
+    .show-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .show-date {
+        font-size: 1em;
+    }
+
+    .show-venue {
+        font-size: 1em;
+    }
+
+    .tickets-btn {
+        width: 100%;
+    }
+}
+
+/* Sección Video Musical */
+.video-section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 20px;
+}
+
+.video-container-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.video-title {
+    font-size: 3em;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, #66b3ff, #ffffff, #66b3ff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.video-subtitle {
+    font-size: 1.2em;
+    color: #aaa;
+    margin-bottom: 40px;
+}
+
+.video-frame {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(102, 179, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-frame:hover {
+    transform: scale(1.02);
+    box-shadow: 0 25px 80px rgba(102, 179, 255, 0.5);
+}
+
+.video-frame iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.youtube-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #FF0000;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+}
+
+.youtube-btn:hover {
+    background: #cc0000;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 0, 0, 0.5);
+}
+
+/* Sección Instagram */
+.instagram-section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 20px;
+}
+
+.instagram-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.instagram-content {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 60px 40px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.instagram-icon {
+    margin-bottom: 30px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.instagram-icon svg {
+    stroke: url(#instagram-gradient);
+}
+
+.instagram-title {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.instagram-subtitle {
+    font-size: 1.2em;
+    color: #aaa;
+    margin-bottom: 40px;
+}
+
+.instagram-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(131, 58, 180, 0.4);
+    margin-bottom: 40px;
+}
+
+.instagram-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(131, 58, 180, 0.6);
+}
+
+.instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.instagram-post {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.instagram-post::before {
+    content: '📸';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+    opacity: 0.3;
+}
+
+.instagram-post:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(131, 58, 180, 0.5);
+}
+
+.next-show-label {
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 400px;
+    }
+
+    .band-logo {
+        width: 90%;
+    }
+
+    .next-show-label {
+        font-size: 1em;
+    }
+
+    .shows-container {
+        padding: 30px 20px;
+    }
+
+    .show-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .show-date {
+        font-size: 1em;
+    }
+
+    .show-venue {
+        font-size: 1em;
+    }
+
+    .tickets-btn {
+        width: 100%;
+    }
+
+    .video-title {
+        font-size: 2em;
+    }
+
+    .instagram-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .instagram-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.next-show-label {
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
+.footer {
+    background: linear-gradient(180deg, #050505 0%, #0f0f0f 60%, #000 100%);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Glow superior */
+.footer::before {
+    content: "";
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, #013380, transparent 70%);
+    transform: translateX(-50%);
+    filter: blur(80px);
+    z-index: 0;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Lado izquierdo */
+.footer-left {
+    flex: 1;
+}
+
+.footer-logo {
+    max-width: 280px;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 0 25px #ff007899);
+}
+
+/* Redes */
+.social-icons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    color: #fff;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+}
+
+.social-link:hover {
+    color: #ff0077;
+    transform: translateY(-5px) scale(1.1);
+    filter: drop-shadow(0 0 20px #013380);
+}
+
+/* Lado derecho */
+.footer-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-band-photo {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow:
+        0 0 30px #013380,
+        0 0 80px rgba(0, 0, 0, 0.8);
+    transform: rotate(-2deg);
+}
+
+/* Parte inferior */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .footer-band-photo {
+        transform: none;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 400px;
+    }
+
+    .band-logo {
+        width: 90%;
+    }
+
+    .next-show-label {
+        font-size: 1em;
+    }
+
+    .shows-container {
+        padding: 30px 20px;
+    }
+
+    .show-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .show-date {
+        font-size: 1em;
+    }
+
+    .show-venue {
+        font-size: 1em;
+    }
+
+    .tickets-btn {
+        width: 100%;
+    }
+
+    .video-title {
+        font-size: 2em;
+    }
+
+    .instagram-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .instagram-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-right {
+        justify-content: center;
+    }
+
+    .footer-logo {
+        width: 200px;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
