@@ -167,20 +167,6 @@ body::after {
     border-radius: 5px;
 }
 
-@media (max-width: 768px) {
-    .hero-section {
-        height: 400px;
-    }
-
-    .band-logo {
-        width: 90%;
-    }
-
-    .next-show-label {
-        font-size: 1em;
-    }
-}
-
 /* Seccion de shows */
 
 .shows-container {
@@ -284,41 +270,6 @@ body::after {
     border-radius: 5px;
 }
 
-@media (max-width: 768px) {
-    .hero-section {
-        height: 400px;
-    }
-
-    .band-logo {
-        width: 90%;
-    }
-
-    .next-show-label {
-        font-size: 1em;
-    }
-
-    .shows-container {
-        padding: 30px 20px;
-    }
-
-    .show-row {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        text-align: center;
-    }
-
-    .show-date {
-        font-size: 1em;
-    }
-
-    .show-venue {
-        font-size: 1em;
-    }
-
-    .tickets-btn {
-        width: 100%;
-    }
-}
 
 /* Sección Video Musical */
 .video-section {
@@ -523,54 +474,6 @@ body::after {
     border-radius: 5px;
 }
 
-@media (max-width: 768px) {
-    .hero-section {
-        height: 400px;
-    }
-
-    .band-logo {
-        width: 90%;
-    }
-
-    .next-show-label {
-        font-size: 1em;
-    }
-
-    .shows-container {
-        padding: 30px 20px;
-    }
-
-    .show-row {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        text-align: center;
-    }
-
-    .show-date {
-        font-size: 1em;
-    }
-
-    .show-venue {
-        font-size: 1em;
-    }
-
-    .tickets-btn {
-        width: 100%;
-    }
-
-    .video-title {
-        font-size: 2em;
-    }
-
-    .instagram-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .instagram-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 .next-show-label {
     font-size: 1.2em;
     letter-spacing: 2px;
@@ -692,7 +595,7 @@ body::after {
     }
 
     .band-logo {
-        width: 90%;
+        width: 100%;
     }
 
     .next-show-label {
