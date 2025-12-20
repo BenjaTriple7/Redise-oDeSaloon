@@ -621,7 +621,7 @@ body::after {
 .footer-logo {
     max-width: 280px;
     margin-bottom: 30px;
-    filter: drop-shadow(0 0 25px #ff007899);
+    filter: drop-shadow(0 0 25px #013380);
 }
 
 /* Redes */
@@ -638,7 +638,7 @@ body::after {
 }
 
 .social-link:hover {
-    color: #ff0077;
+    color: #013380;
     transform: translateY(-5px) scale(1.1);
     filter: drop-shadow(0 0 20px #013380);
 }
