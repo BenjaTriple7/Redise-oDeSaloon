@@ -356,6 +356,45 @@ body::after {
     box-shadow: 0 15px 40px rgba(255, 0, 0, 0.5);
 }
 
+/* SECCION DE ALMBUB */
+
+.album-experience {
+    padding: 80px 20px;
+    background: radial-gradient(circle at top, #111, #000);
+    color: white;
+    text-align: center;
+}
+
+.album-experience h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.album-experience .promo-text {
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+    color: #1db954;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 80px;
+    flex-wrap: wrap;
+}
+
+/* Spotify */
+.spotify-wrapper iframe {
+    border-radius: 12px;
+}
+
+
+
+
+
+
 /* Sección Instagram */
 .instagram-section {
     position: relative;
@@ -451,7 +490,8 @@ body::after {
 .instagram-post img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Recorta sin deformar */
+    object-fit: cover;
+    /* Recorta sin deformar */
     display: block;
 }
 
@@ -472,6 +512,147 @@ body::after {
 }
 
 
+
+
+/* SEccion de vinilo  */
+
+.vinyl-section {
+    padding: 70px 20px;
+    color: white;
+    text-align: center;
+}
+
+.turntable-area {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    align-items: center;
+}
+
+/* 🎵 VINILO */
+.vinyl {
+    width: 170px;
+    height: 170px;
+    cursor: grab;
+}
+
+.vinyl-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: repeating-radial-gradient(circle,
+            #082858 0px,
+            #111 2px,
+            #111 3px);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Imagen del álbum */
+.vinyl-inner img {
+    width: 45%;
+    height: 45%;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Giro */
+.vinyl.spinning .vinyl-inner {
+    animation: spin 1.8s linear infinite;
+}
+
+/* 🎛️ TORNAMESA */
+.turntable {
+    width: 300px;
+    height: 220px;
+    background: linear-gradient(145deg, #3a3a3a, #1e1e1e);
+    border-radius: 14px;
+    position: relative;
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.6);
+}
+
+.turntable .vinyl {
+    position: absolute;
+    top: 110px;
+    left: 110px;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+/* Plato */
+.platter {
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle, #555, #222);
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+}
+
+/* Eje */
+.spindle {
+    width: 8px;
+    height: 8px;
+    background: silver;
+    border-radius: 50%;
+    position: absolute;
+    top: 109px;
+    left: 109px;
+    z-index: 3;
+}
+
+/* Brazo */
+.arm {
+    width: 110px;
+    height: 6px;
+    background: #bbb;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    transform-origin: right center;
+    transform: rotate(-30deg);
+    border-radius: 3px;
+    transition: transform 0.6s ease;
+    z-index: 3;
+}
+
+.arm.playing {
+    transform: rotate(-5deg);
+}
+
+
+.needle {
+    width: 10px;
+    height: 10px;
+    background: red;
+    position: absolute;
+    left: -5px;
+    top: -2px;
+    border-radius: 50%;
+}
+
+/* Animación */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+/* Footer  */
 
 .footer {
     background: linear-gradient(180deg, #050505 0%, #0f0f0f 60%, #000 100%);

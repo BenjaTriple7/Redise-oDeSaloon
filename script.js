@@ -19,3 +19,46 @@ function checkPastEvents() {
 }
 
 checkPastEvents();
+
+
+
+/* Vinilo */
+
+const vinyl = document.getElementById("vinyl");
+const turntable = document.getElementById("turntable");
+const audio = document.getElementById("audio");
+const arm = document.getElementById("arm");
+
+let isPlaying = false;
+
+turntable.addEventListener("dragover", e => e.preventDefault());
+
+turntable.addEventListener("drop", () => {
+    if (isPlaying) return;
+
+    // Colocar vinilo
+    turntable.appendChild(vinyl);
+
+    // Reproducir
+    audio.play();
+    vinyl.classList.add("spinning");
+    arm.classList.add("playing");
+
+    isPlaying = true;
+});
+
+// Permitir sacar el vinilo
+vinyl.addEventListener("dragstart", () => {
+    if (!isPlaying) return;
+
+    audio.pause();
+    audio.currentTime = 0;
+
+    vinyl.classList.remove("spinning");
+    arm.classList.remove("playing");
+
+    document.querySelector(".turntable-area").prepend(vinyl);
+
+    isPlaying = false;
+});
+
