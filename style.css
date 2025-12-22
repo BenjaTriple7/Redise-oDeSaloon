@@ -364,17 +364,14 @@ body::after {
 }
 
 .instagram-container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .instagram-content {
     text-align: center;
-    background: rgba(0, 0, 0, 0.4);
     padding: 60px 40px;
     border-radius: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
 }
 
 .instagram-icon {
@@ -438,20 +435,27 @@ body::after {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
-    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .instagram-post {
-    aspect-ratio: 1;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    aspect-ratio: 1 / 1;
     border-radius: 10px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
     overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #eee;
 }
 
-.instagram-post::before {
+.instagram-post img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta sin deformar */
+    display: block;
+}
+
+.instagram-post:empty::before {
     content: '📸';
     position: absolute;
     top: 50%;
@@ -461,26 +465,13 @@ body::after {
     opacity: 0.3;
 }
 
+
 .instagram-post:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(131, 58, 180, 0.5);
+    box-shadow: 0 10px 30px rgba(131, 58, 180, 0.4);
 }
 
-.next-show-label {
-    font-size: 1.2em;
-    letter-spacing: 2px;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px 30px;
-    border-radius: 5px;
-}
 
-.next-show-label {
-    font-size: 1.2em;
-    letter-spacing: 2px;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px 30px;
-    border-radius: 5px;
-}
 
 .footer {
     background: linear-gradient(180deg, #050505 0%, #0f0f0f 60%, #000 100%);
