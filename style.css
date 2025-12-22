@@ -275,7 +275,7 @@ body::after {
 .video-section {
     position: relative;
     z-index: 1;
-    padding: 100px 20px;
+    padding: 100px 20px 70px 20px;
 }
 
 .video-container-wrapper {
@@ -407,7 +407,6 @@ body::after {
 .instagram-section {
     position: relative;
     z-index: 1;
-    padding: 100px 20px;
 }
 
 .instagram-container {
@@ -531,16 +530,64 @@ body::after {
 }
 
 .turntable-area {
-    margin-top: 50px;
+    margin-top: 60px;
+    padding: 20px 60px;
     display: flex;
     justify-content: center;
-    gap: 100px;
     align-items: center;
+    gap: 120px;
+
+    /* Fondo oscuro con textura */
+    background:
+        linear-gradient(180deg, #050505, #0f0f0f),
+        radial-gradient(circle at top, #013380, transparent 60%);
+
+    border-radius: 32px;
+
+    /* Marco luminoso */
+    border: 1px solid rgba(0, 170, 255, 0.25);
+
+    /* Profundidad fuerte */
+    box-shadow:
+        0 40px 80px #000000cc,
+        inset 0 0 80px #013380;
+
+    position: relative;
+    overflow: hidden;
 }
 
+.turntable-area::before {
+    content: "";
+    position: absolute;
+    inset: -60%;
+    background: radial-gradient(
+        circle,
+        rgba(0, 170, 255, 0.18),
+        transparent 70%
+    );
+    animation: pulseGlow 6s ease-in-out infinite;
+    z-index: 0;
+}
 
+.turntable-area > * {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
 
 /* 🎵 VINILO */
+
+
 .vinyl {
     width: 170px;
     height: 170px;
@@ -574,6 +621,13 @@ body::after {
 /* Giro */
 .vinyl.spinning .vinyl-inner {
     animation: spin 1.8s linear infinite;
+}
+
+.vinyl.docked {
+    position: absolute;
+    top: 110px;
+    left: 110px;
+    transform: translate(-50%, -50%);
 }
 
 /* 🎛️ TORNAMESA */
@@ -844,15 +898,42 @@ body::after {
 }
 
 @media (max-width: 700px) {
-    .turntable-area {
-        display: none;
-    }
-
     .album-experience h2 {
         font-size: 2rem;
     }
 
     .album-experience .promo-text {
         font-size: 1rem;
+    }
+}
+
+
+/* responsive tornamesa  */
+
+@media (max-width: 768px) {
+
+    .turntable-area {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    /* Vinilo fuera de la tornamesa */
+    .vinyl {
+        position: relative;
+        transition: all 0.6s ease;
+    }
+
+    /* Cuando se encaja */
+    .vinyl.docked {
+        position: absolute;
+        top: 110px;
+        left: 110px;
+        transform: translate(-50%, -50%);
+        cursor: default;
+    }
+    .turntable-area {
+        padding: 50px 25px;
+        gap: 50px;
+        border-radius: 24px;
     }
 }

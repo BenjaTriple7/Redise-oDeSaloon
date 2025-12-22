@@ -21,9 +21,6 @@ function checkPastEvents() {
 checkPastEvents();
 
 
-
-/* Vinilo */
-
 const vinyl = document.getElementById("vinyl");
 const turntable = document.getElementById("turntable");
 const audio = document.getElementById("audio");
@@ -31,34 +28,61 @@ const arm = document.getElementById("arm");
 
 let isPlaying = false;
 
+// Detectar mobile
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+/* =========================
+   DESKTOP: DRAG & DROP
+========================= */
+
 turntable.addEventListener("dragover", e => e.preventDefault());
 
 turntable.addEventListener("drop", () => {
     if (isPlaying) return;
-
-    // Colocar vinilo
-    turntable.appendChild(vinyl);
-
-    // Reproducir
-    audio.play();
-    vinyl.classList.add("spinning");
-    arm.classList.add("playing");
-
-    isPlaying = true;
+    placeVinyl();
 });
 
-// Permitir sacar el vinilo
 vinyl.addEventListener("dragstart", () => {
     if (!isPlaying) return;
+    removeVinyl();
+});
 
+/* =========================
+   MOBILE: TAP (TOGGLE)
+========================= */
+
+if (isMobile) {
+    vinyl.addEventListener("click", () => {
+        if (!isPlaying) {
+            placeVinyl();
+        } else {
+            removeVinyl();
+        }
+    });
+}
+
+/* =========================
+   FUNCIONES
+========================= */
+
+function placeVinyl() {
+    turntable.appendChild(vinyl);
+
+    vinyl.classList.add("spinning", "docked");
+    arm.classList.add("playing");
+
+    audio.play();
+    isPlaying = true;
+}
+
+function removeVinyl() {
     audio.pause();
     audio.currentTime = 0;
 
-    vinyl.classList.remove("spinning");
+    vinyl.classList.remove("spinning", "docked");
     arm.classList.remove("playing");
 
     document.querySelector(".turntable-area").prepend(vinyl);
 
     isPlaying = false;
-});
-
+}
