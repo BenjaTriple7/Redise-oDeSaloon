@@ -385,10 +385,18 @@ body::after {
     flex-wrap: wrap;
 }
 
-/* Spotify */
+/* Spotify responsive */
+.spotify-wrapper {
+    max-width: 650px;
+    width: 100%;
+}
+
 .spotify-wrapper iframe {
+    width: 100%;
+    height: 352px;
     border-radius: 12px;
 }
+
 
 
 
@@ -529,6 +537,8 @@ body::after {
     gap: 100px;
     align-items: center;
 }
+
+
 
 /* 🎵 VINILO */
 .vinyl {
@@ -830,5 +840,19 @@ body::after {
     .social-icons {
         display: flex;
         gap: 50px;
+    }
+}
+
+@media (max-width: 700px) {
+    .turntable-area {
+        display: none;
+    }
+
+    .album-experience h2 {
+        font-size: 2rem;
+    }
+
+    .album-experience .promo-text {
+        font-size: 1rem;
     }
 }
