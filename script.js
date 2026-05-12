@@ -1,4 +1,4 @@
-const slides = document.querySelectorAll('.slide');
+/* const slides = document.querySelectorAll('.slide');
 
 let current = 0;
 
@@ -36,7 +36,7 @@ function checkPastEvents() {
 }
 
 checkPastEvents();
-
+ */
 
 const vinyl = document.getElementById("vinyl");
 const turntable = document.getElementById("turntable");
