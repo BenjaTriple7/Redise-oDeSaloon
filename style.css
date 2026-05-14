@@ -92,7 +92,7 @@ body::after {
 .marquee {
     display: inline-block;
     color: #ffffff;
-    font-size: 1.5rem;
+    font-size: 1rem;
     letter-spacing: 2px;
     padding-left: 100%;
     /* Empieza fuera de la pantalla */
@@ -138,6 +138,20 @@ body::after {
 
 .band-photo {
     position: absolute;
+    top: 85%;
+    left: 50%;
+    width: 70%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    z-index: 1;
+    transition: transform 0.1s ease-out;
+    opacity: 0;
+    animation: fadeInPhoto 0.8s ease-out 0.1s forwards;
+}
+
+/* .band-photo {
+    position: absolute;
     top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -149,12 +163,12 @@ body::after {
     transition: transform 0.1s ease-out;
     opacity: 0;
     animation: fadeInPhoto 0.8s ease-out 0.1s forwards;
-}
+} */
 
 .band-logo {
     position: relative;
     z-index: 2;
-    width: 60%;
+    width: 50%;
     max-width: 1400px;
     min-width: 300px;
     height: auto;
@@ -165,32 +179,71 @@ body::after {
     animation: fadeInLogo 1.2s ease-out 0.8s forwards;
 }
 
+.int3 {
+    display: none;
+}
+
 /* ─── Tablet landscape / desktop pequeño ─── */
-@media (max-width: 1024px) {
+@media (max-width: 1290px) {
     .hero-section {
-        height: 520px;
+        height: 620px;
     }
 
     .band-photo {
-        width: 75%;
-        top: 68%;
+        width: 82%;
+        top: 88%;
     }
 
     .band-logo {
-        width: 70%;
+        width: 60%;
         top: -28%;
     }
 }
 
-/* ─── Tablet portrait ─── */
-@media (max-width: 768px) {
+@media (max-width: 1190px) {
     .hero-section {
-        height: 460px;
+        height: 580px;
     }
 
     .band-photo {
-        width: 88%;
-        top: 66%;
+        width: 100%;
+        top: 88%;
+    }
+}
+
+@media (max-width: 1090px) {
+    .hero-section {
+        height: 520px;
+    }
+}
+
+@media (max-width: 990px) {
+    .hero-section {
+        height: 480px;
+    }
+}
+
+@media (max-width: 890px) {
+    .hero-section {
+        height: 460px;
+    }
+}
+
+@media (max-width: 830px) {
+    .hero-section {
+        height: 440px;
+    }
+}
+
+/* ─── Tablet portrait ─── */
+@media (max-width: 790px) {
+    .hero-section {
+        height: 440px;
+    }
+
+    .band-photo {
+        width: 100%;
+        top: 90%;
     }
 
     .band-logo {
@@ -200,6 +253,24 @@ body::after {
     }
 }
 
+@media (max-width: 740px) {
+    .int3 {
+        display: flex;
+        top: 78%;
+    }
+
+    .int2 {
+        display: none;
+    }
+}
+
+@media (max-width: 690px) {
+    .hero-section {
+        height: 390px;
+    }
+}
+
+
 /* ─── Móvil grande ─── */
 @media (max-width: 480px) {
     .hero-section {
@@ -208,13 +279,20 @@ body::after {
 
     .band-photo {
         width: 100%;
-        top: 64%;
     }
 
     .band-logo {
         width: 90%;
         min-width: 200px;
         top: -18%;
+    }
+}
+
+
+@media (max-width: 470px) {
+    .int3 {
+        display: flex;
+        top: 80%;
     }
 }
 
@@ -226,13 +304,17 @@ body::after {
 
     .band-photo {
         width: 100%;
-        top: 62%;
+        top: 80%;
     }
 
     .band-logo {
         width: 95%;
         min-width: 180px;
         top: -14%;
+    }
+
+    .top-bar {
+        font-size: 1rem;
     }
 }
 
